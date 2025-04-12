@@ -1,0 +1,12 @@
+# This file is used to trigger the GitHub Actions workflow
+# Updated: 2025-04-12
+
+The navigation links have been fixed and the following pages are now working:
+- Home (/)
+- About (/about)
+- Services (/services)
+- Solutions (/solutions)
+- Careers (/careers)
+- Contact (/contact)
+
+All navigation links should now work correctly.
