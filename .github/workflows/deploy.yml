@@ -22,6 +22,15 @@ jobs:
         with:
           node-version: 18
           # Removed npm cache as there's no package.json
+      
+      - name: Verify Files
+        run: |
+          echo "Verifying critical files for deployment..."
+          if [ -f "index.html" ] && [ -f "404.html" ]; then 
+            echo "✅ HTML files verified."
+          else 
+            echo "❌ Critical HTML files missing!" && exit 1
+          fi
           
       - name: Configure Git
         run: |
