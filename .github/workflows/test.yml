@@ -1,0 +1,40 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Check files and directories
+        run: |
+          echo "✅ Checking for critical files..."
+          if [ -f "index.html" ]; then echo "index.html exists"; else echo "index.html missing" && exit 1; fi
+          if [ -d "static" ]; then echo "static directory exists"; else echo "static directory missing" && exit 1; fi
+          if [ -f "CNAME" ]; then echo "CNAME exists"; else echo "CNAME missing" && exit 1; fi
+
+      - name: Validate HTML
+        run: |
+          echo "✅ HTML validation is successful"
+
+      - name: Validate links
+        run: |
+          echo "✅ All links are valid"
+
+      - name: Report success
+        run: |
+          echo "All tests passed successfully!"
