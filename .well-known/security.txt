@@ -1,0 +1,6 @@
+# Security Policy
+Contact: mailto:security@abhiitsolutions.com
+Expires: 2026-04-12T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.abhiitsolutions.com/.well-known/security.txt
+Policy: https://www.abhiitsolutions.com/security-policy
