@@ -1,1 +1,4 @@
-/*    /index.html   200
+/api/contact  /contact/index.php  200
+/contact/*  /contact/:splat  200
+/mailer/*  /contact/:splat  200
+https://mailer.abhiitsolutions.com/contact  https://www.abhiitsolutions.com/contact/index.php  200
