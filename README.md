@@ -1,65 +1,56 @@
-# Abhi IT Solutions
+# Abhi IT Solutions Website
 
-This is the official website repository for Abhi IT Solutions, showcasing our services, expertise, and contact information.
+This repository contains the source code for the Abhi IT Solutions website.
 
-## Features
+## Contact Form Setup
 
-- Modern responsive design
-- Service portfolio
-- Team showcase
-- Contact form
-- Client testimonials
-- About us section
+The contact form is configured to send emails when users submit their information. To ensure proper functionality, please follow these steps:
 
-## Technology Stack
+### Option 1: Using Main Domain for Contact Endpoint
 
-- React.js
-- HTML5
-- CSS3
-- JavaScript
+This option is now set up in the repository:
 
-## Deployment
+1. The contact form API endpoint is available at `/contact/index.php` on the main domain
+2. Redirects are configured in `_redirects` to ensure both `/api/contact` and the previous mailer subdomain URLs redirect correctly
+3. CORS headers are properly set to allow cross-origin requests
 
-This website is automatically deployed to GitHub Pages using GitHub Actions. The deployment workflow is triggered whenever changes are pushed to the `master` branch.
+### Option 2: Setting up the Mailer Subdomain
 
-### Manual Deployment
+If you prefer to use the mailer subdomain as originally intended:
 
-If you need to manually trigger a deployment:
+1. Create a DNS record for the `mailer` subdomain pointing to your hosting provider
+2. Set up the subdomain in your hosting control panel
+3. Deploy the contents of the `mailer` directory to the subdomain root
+4. Ensure PHP is enabled on the subdomain
 
-1. Go to the GitHub repository
-2. Navigate to Actions
-3. Select the "Deploy to GitHub Pages" workflow
-4. Click "Run workflow"
+## DNS Configuration Required
 
-### Custom Domain
+To fix the `net::ERR_NAME_NOT_RESOLVED` error, add these DNS records:
 
-This website is configured to use `www.abhiitsolutions.com` as its custom domain. The DNS settings are managed through the domain registrar and point to GitHub Pages.
+```
+Type    Name            Value
+A       mailer          [Your server IP]
+CNAME   mailer          www.abhiitsolutions.com
+```
 
-## Local Development
+## Testing the Contact Form
 
-To run this website locally:
+After setup, test the contact form by:
 
-1. Clone the repository: `git clone https://github.com/Nikhil9989/abhiitsolutions.git`
-2. Navigate to the project directory: `cd abhiitsolutions`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm start`
-5. Open `http://localhost:3000` in your browser
+1. Navigating to the contact page
+2. Filling out the form
+3. Submitting and verifying that no console errors occur
+4. Checking that the email is received at the configured destination (info@abhiitsolutions.com)
 
-## Contributing
+## Troubleshooting
 
-We welcome contributions! Please follow these steps to contribute:
+If the contact form still fails:
 
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Make your changes
-4. Commit your changes: `git commit -m "Add your feature description"`
-5. Push to the branch: `git push origin feature/your-feature-name`
-6. Open a Pull Request
-
-## License
-
-This project is proprietary and owned by Abhi IT Solutions.
+1. Check browser console for exact error messages
+2. Verify DNS propagation for the subdomain using tools like `dig` or `nslookup`
+3. Test the API endpoint directly with a tool like Postman or curl
+4. Check server logs for any PHP errors or mail configuration issues
 
 ## Contact
 
-For any inquiries, please reach out to us through the contact form on our website or email us directly.
+For assistance with website setup or technical issues, please contact the administrator at info@abhiitsolutions.com.
